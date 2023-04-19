@@ -3,7 +3,7 @@ import {
   CHAT_HISTORY_TYPE,
   HistoryItem,
   HistoryItemActor,
-  HistoryItemNarratedAction,
+  // HistoryItemNarratedAction,
   HistoryItemTriggerEvent,
 } from '@inworld/web-sdk';
 import { Box, Fade, Stack, Typography } from '@mui/material';
@@ -32,7 +32,7 @@ type CombinedHistoryItem = {
   interactionId: string;
   messages: (
     | HistoryItemActor
-    | HistoryItemNarratedAction
+    // | HistoryItemNarratedAction
     | HistoryItemTriggerEvent
   )[];
   source: Actor;
@@ -75,7 +75,7 @@ export const History = (props: HistoryProps) => {
       let item = history[i];
       switch (item.type) {
         case CHAT_HISTORY_TYPE.ACTOR:
-        case CHAT_HISTORY_TYPE.NARRATED_ACTION:
+        /*case CHAT_HISTORY_TYPE.NARRATED_ACTION:
           currentRecord = mergedRecords.find(
             (r) =>
               r.interactionId === item.interactionId &&
@@ -99,6 +99,7 @@ export const History = (props: HistoryProps) => {
             mergedRecords.push(currentRecord);
           }
           break;
+        */
         case CHAT_HISTORY_TYPE.TRIGGER_EVENT:
           mergedRecords.push({
             interactionId: item.interactionId!,
@@ -130,14 +131,14 @@ export const History = (props: HistoryProps) => {
   const getContent = (
     message:
       | HistoryItemActor
-      | HistoryItemNarratedAction
+      // | HistoryItemNarratedAction
       | HistoryItemTriggerEvent,
   ) => {
     switch (message.type) {
       case CHAT_HISTORY_TYPE.ACTOR:
         return message.text;
-      case CHAT_HISTORY_TYPE.NARRATED_ACTION:
-        return <HistoryAction>{message.text}</HistoryAction>;
+      // case CHAT_HISTORY_TYPE.NARRATED_ACTION:
+      // return <HistoryAction>{message.text}</HistoryAction>;
       case CHAT_HISTORY_TYPE.TRIGGER_EVENT:
         return message.name;
     }

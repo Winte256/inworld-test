@@ -77,7 +77,7 @@ function App() {
       capabilities: {
         ...(form.chatView === CHAT_VIEW.AVATAR && { phonemes: true }),
         emotions: true,
-        narratedActions: true,
+        audio: true, // ??
       },
       sceneName: form.scene?.name!,
       playerName: form.player?.name!,
