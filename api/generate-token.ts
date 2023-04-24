@@ -29,4 +29,4 @@ const handler = async (request: VercelRequest, response: VercelResponse) => {
   response.send(JSON.stringify(token));
 }
 
-export default allowCors(handler);
+module.exports = allowCors(handler);
