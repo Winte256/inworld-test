@@ -3,7 +3,7 @@ import { config } from './config';
 
 export const configuration = {
   character: { name: config.INWORLD_CHARACTER },
-  chatView: CHAT_VIEW.TEXT,
+  chatView: CHAT_VIEW.AVATAR,
   scene: { name: config.INWORLD_SCENE },
   player: { name: 'Participant' },
 };

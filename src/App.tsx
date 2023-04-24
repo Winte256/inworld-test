@@ -160,6 +160,14 @@ function App() {
     });
 
     setInitialized(true);
+
+    if (
+      defaults.configuration.character.name &&
+      defaults.configuration.scene.name &&
+      defaults.configuration.player.name
+    ) {
+      openConnection();
+    }
   }, [formMethods]);
 
   const content = chatting ? (
