@@ -104,7 +104,7 @@ function App() {
       },
     });
     const characters = await service.connection.getCharacters();
-    console.log('Characters', characters);
+
     const character = characters.find(
       (c: Character) => c.getResourceName() === form.character?.name,
     );
@@ -153,18 +153,15 @@ function App() {
   useEffect(() => {
     const configuration = getConfiguration();
 
-    formMethods.reset({
-      ...(configuration
-        ? (JSON.parse(configuration) as Configuration)
-        : defaults.configuration),
-    });
+    formMethods.reset(configuration);
 
     setInitialized(true);
 
     if (
-      defaults.configuration.character.name &&
-      defaults.configuration.scene.name &&
-      defaults.configuration.player.name
+      (defaults.configuration.character.name &&
+        defaults.configuration.scene.name &&
+        defaults.configuration.player.name) ||
+      (configuration.character && configuration.scene)
     ) {
       openConnection();
     }
